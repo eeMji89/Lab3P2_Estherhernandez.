@@ -15,11 +15,16 @@ public class Mago extends Personajes {
         super();
     }
 
-    public Mago(String magia, String nombre, String raza, int estatura, int peso, String descripcion, String nacionalidad) {
-        super(nombre, raza, estatura, peso, descripcion, nacionalidad);
+    public Mago(String magia) {
         this.magia = magia;
     }
 
+    public Mago(String magia, String nombre, String raza, int estatura, int peso, int edad, String descripcion, String nacionalidad, String tipo) {
+        super(nombre, raza, estatura, peso, edad, descripcion, nacionalidad, tipo);
+        this.magia = magia;
+    }
+
+   
     public String getMagia() {
         return magia;
     }

@@ -10,21 +10,44 @@ public class Personajes {
     private String raza;
     private int estatura;
     private int peso;
+    private int edad;
     private String descripcion;
     private String nacionalidad;
+    private String tipo;
 
     public Personajes() {
-        
     }
 
-    public Personajes(String nombre, String raza, int estatura, int peso, String descripcion, String nacionalidad) {
+    public Personajes(String nombre, String raza, int estatura, int peso, int edad, String descripcion, String nacionalidad, String tipo) {
         this.nombre = nombre;
         this.raza = raza;
         this.estatura = estatura;
         this.peso = peso;
+        this.edad = edad;
         this.descripcion = descripcion;
         this.nacionalidad = nacionalidad;
+        this.tipo = tipo;
     }
+
+    
+   
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
 
     public String getNombre() {
         return nombre;
@@ -76,7 +99,8 @@ public class Personajes {
 
     @Override
     public String toString() {
-        return "Personajes{" + "nombre=" + nombre + ", raza=" + raza + ", estatura=" + estatura + ", peso=" + peso + ", descripcion=" + descripcion + ", nacionalidad=" + nacionalidad+ ",";
+        return "Personajes{" + "nombre=" + nombre + ", raza=" + raza + ", estatura=" + estatura + ", peso=" + peso +",Años= "+edad+", descripcion=" + descripcion 
+                + ", nacionalidad=" + nacionalidad+ ",Tipo="+tipo+", ";
     }
     
     

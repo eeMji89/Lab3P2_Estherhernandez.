@@ -13,11 +13,18 @@ public class Clerigo extends Personajes {
         super();
     }
 
-    public Clerigo(String Dcreyente, String Tinvocacion, String nombre, String raza, int estatura, int peso, String descripcion, String nacionalidad) {
-        super(nombre, raza, estatura, peso, descripcion, nacionalidad);
+    public Clerigo(String Dcreyente, String Tinvocacion) {
         this.Dcreyente = Dcreyente;
         this.Tinvocacion = Tinvocacion;
     }
+
+    public Clerigo(String Dcreyente, String Tinvocacion, String nombre, String raza, int estatura, int peso, int edad, String descripcion, String nacionalidad, String tipo) {
+        super(nombre, raza, estatura, peso, edad, descripcion, nacionalidad, tipo);
+        this.Dcreyente = Dcreyente;
+        this.Tinvocacion = Tinvocacion;
+    }
+
+   
 
     public String getDcreyente() {
         return Dcreyente;

@@ -21,11 +21,11 @@ public class Picaro extends Personajes {
         this.robos = robos;
     }
 
-    public Picaro(String instrumento, int robos, String nombre, String raza, int estatura, int peso, String descripcion, String nacionalidad) {
-        super(nombre, raza, estatura, peso, descripcion, nacionalidad);
+    public Picaro(String instrumento, int robos, String nombre, String raza, int estatura, int peso, int edad, String descripcion, String nacionalidad, String tipo) {
+        super(nombre, raza, estatura, peso, edad, descripcion, nacionalidad, tipo);
         this.instrumento = instrumento;
         this.robos = robos;
-    }
+    }  
     
     public String getInstrumento() {
         return instrumento;
