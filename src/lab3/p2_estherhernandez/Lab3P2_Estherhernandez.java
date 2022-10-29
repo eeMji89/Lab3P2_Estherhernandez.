@@ -55,7 +55,8 @@ public class Lab3P2_Estherhernandez {
                     }
                     break;
                 case 5:
-                    
+                    System.out.println(Listar(P));
+                    Combate(P);
                     break;
                 case 6:
                     flag = false;
@@ -330,8 +331,7 @@ public class Lab3P2_Estherhernandez {
         }
         return Listar;
     }
-    public static ArrayList Modificar(ArrayList p){
-        
+    public static ArrayList Modificar(ArrayList p){       
         System.out.println(Listar(p));
         System.out.println("Seleccione el personaje que desea modificar: ");
         int p1 = lea.nextInt();
@@ -565,6 +565,144 @@ public class Lab3P2_Estherhernandez {
         }
         return p;
     }
-    
+    public static void Combate(ArrayList P){
+    System.out.println("Seleccione el personaje con el que desea jugar : ");
+        int p0 = lea.nextInt();                   
+        if (p0<= P.size()-1&& P.get(p0)instanceof Personajes ) {
+            
+            System.out.println(Listar(P));           
+            System.out.println("Seleccione el personaje contra quien desea jugar: ");
+             int op8=0;
+             if (op8!=p0) {
+                if (op8<= P.size()-1&& P.get(op8)instanceof Personajes ) {
+                    double hpj1 = ((Personajes)P.get(p0)).getHp();
+                    double hpj2=  ((Personajes)P.get(op8)).getHp();
+                    double CS1 = 0,CS2=0,DM1=0,DM2=0;
+                    double bono=0;
+            if ( P.get(p0)instanceof Clerigo|| P.get(op8)instanceof Clerigo) {
+                if ( P.get(p0)instanceof Clerigo){
+                    CS1= 97;
+                    DM1= 5+ rd.nextInt(15);
+                }  
+                else if(P.get(op8)instanceof Clerigo){
+                    CS2= 97;
+                    DM2= 5+ rd.nextInt(15);
+                }
+            }
+            else if (P.get(p0) instanceof Barbaro || P.get(op8)instanceof Barbaro) {
+                if (P.get(p0) instanceof Barbaro) {
+                    CS1= 93 ;
+                    DM1= 15+ rd.nextInt(30);
+                }
+                else if (P.get(op8)instanceof Barbaro) {
+                    CS2= 93;
+                    DM2= 15+ rd.nextInt(30);
+                }
+     
+            }
+            else if (P.get(p0) instanceof Mago|| P.get(op8)instanceof Mago) {
+                if (P.get(p0) instanceof Mago) {
+                  CS1= 0;  
+                  DM1= 5+ rd.nextInt(10);
+                }
+                else if (P.get(op8)instanceof Mago) {
+                    CS2=0;
+                    DM2= 5+ rd.nextInt(10);
+                }
+            }
+            else if (P.get(p0) instanceof Picaro|| P.get(op8)instanceof Picaro) {
+                if (P.get(p0) instanceof Picaro) {
+                    CS1=80 ;
+                    DM1= 15+ rd.nextInt(25);
+                }
+                else if (P.get(op8)instanceof Picaro) {
+                    CS2 = 80;
+                    DM2= 15+ rd.nextInt(25);
+                }                        
+            }
+            if (((Personajes)P.get(p0)).getTipo().equals("Lead")||((Personajes)P.get(op8)).getTipo().equals("Lead")) {
+                if (((Personajes)P.get(p0)).getTipo().equals("Lead")&&( P.get(p0)instanceof Clerigo||P.get(p0)instanceof Barbaro)) {
+                    bono = CS1*0.5;
+                    CS1=CS1+bono;
+                }
+                else if (((Personajes)P.get(op8)).getTipo().equals("Lead")&&( P.get(op8)instanceof Clerigo||P.get(op8)instanceof Barbaro)) {
+
+                }
+            }
+            else if (((Personajes)P.get(p0)).getTipo().equals("Support")||((Personajes)P.get(op8)).getTipo().equals("Support")) {
+                if (((Personajes)P.get(p0)).getTipo().equals("Support")) {
+
+                }
+                else if (((Personajes)P.get(op8)).getTipo().equals("Support")) {
+
+                }
+            }
+            else if (((Personajes)P.get(p0)).getTipo().equals("Offensive")||((Personajes)P.get(op8)).getTipo().equals("Offensive")) {
+                if (((Personajes)P.get(p0)).getTipo().equals("Offensive")&& P.get(p0)instanceof Barbaro) {
+
+                }
+                else if (((Personajes)P.get(op8)).getTipo().equals("Offensive")&& P.get(op8)instanceof Barbaro) {
+
+                }
+            }
+            else if (((Personajes)P.get(p0)).getTipo().equals("Spammer")||((Personajes)P.get(op8)).getTipo().equals("Spammer")) {
+                if (((Personajes)P.get(p0)).getTipo().equals("Spammer")) {
+
+                }
+                else if (((Personajes)P.get(op8)).getTipo().equals("Spammer")) {
+
+                }
+            }
+            else if (((Personajes)P.get(p0)).getTipo().equals("Tank")||((Personajes)P.get(op8)).getTipo().equals("Tank")) {
+                if (((Personajes)P.get(p0)).getTipo().equals("Tank")) {
+
+                }
+                else if (((Personajes)P.get(op8)).getTipo().equals("Tank")) {
+
+                }
+            }
+            
+            
+            
+                    while (hpj1>0 || hpj2 > 0) {                        
+                        System.out.println("Turno Jugador 1: (Usuario)");
+                        System.out.println("Desea \n 1. Atacar?"
+                                + "\n2. Defender?");
+                        int ad = lea.nextInt();
+                        boolean flag0=false;
+                        while(flag0==false){
+                        switch (ad) {
+                            case 1:
+                                int ard= 1+rd.nextInt(100);
+                                if (ard>((Personajes)P.get(op8)).getAc()) {
+                                    
+                                }
+                                flag0=true;
+                                break;
+                            case 2:
+                                flag0=true;
+                                break;
+                            default:
+                                System.out.println("Opcion invalida, intente de nuevo!...");
+                                flag0=false;
+                        }
+                        }
+                        
+                        
+                        System.out.println("Turno Jugador 2: ");
+                        
+                        
+                        
+                        
+                        
+                        
+                    }
+                }
+            }
+             else{
+                 System.out.println("No puede seleccionarse a si mismo");
+             }
+        }
+}
     
 }
