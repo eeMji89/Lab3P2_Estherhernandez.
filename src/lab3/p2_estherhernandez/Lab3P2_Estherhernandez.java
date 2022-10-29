@@ -2,6 +2,7 @@
 package lab3.p2_estherhernandez;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -10,6 +11,7 @@ import java.util.Scanner;
  */
 public class Lab3P2_Estherhernandez {
     static Scanner lea = new Scanner(System.in);
+    static Random rd = new Random();
     /**
      * @param args the command line arguments
      */
@@ -17,9 +19,9 @@ public class Lab3P2_Estherhernandez {
         ArrayList <Personajes> P = new ArrayList();
         boolean flag = true;
         P.add(new Barbaro("Ligera",50,"Mason","Mediano",
-        180,60,30,"Bronceado","Maridia","Lead"));
+        180,60,30,55,"Bronceado","Maridia","Lead",65));
         P.add(new Mago("Mago Blanco","Roderik","Humano",
-        176,58,41,"Esbelto","Zebes","Support"));
+        176,58,41,60,"Esbelto","Zebes","Support",20));
         while (flag== true) {            
             System.out.println("1. Creacion de personajes"
                 + "\n2. Modificar personajes"
@@ -36,7 +38,7 @@ public class Lab3P2_Estherhernandez {
                     System.out.println(Listar(P));
                     break;
                 case 2:
-                    
+                    P = Modificar(P);
                     break;
                 case 3:
                     
@@ -59,7 +61,7 @@ public class Lab3P2_Estherhernandez {
     }
     public static ArrayList AgregarPersonaje(ArrayList p) {
         String Ds="",inv="",arma="",mag="",instrumento="";
-        int tipoP=0,xp=0,robo=0;
+        int tipoP=0,xp=0,robo=0,hp=0,ac=0;
         boolean flag2 = false;
         while (flag2 == false) {
             System.out.println("Seleccione la clase del personaje: ");
@@ -72,6 +74,7 @@ public class Lab3P2_Estherhernandez {
             switch (tipo) {
                 case 1:
                     tipoP = 1;
+                    ac=40;
                     System.out.println("Ingrese el nombre del dios o demonio al que sirve: ");
                      lea.nextLine(); Ds =lea.nextLine(); System.out.println(Ds);
                     System.out.println("Ingrese el tipo de invocacion del personaje: ");
@@ -81,6 +84,7 @@ public class Lab3P2_Estherhernandez {
                     break;
                 case 2:
                     tipoP = 2;
+                    ac=65;
                     System.out.println("Seleccione el tipo de arma del barbaro: "
                             + "\n1. Pesada"
                             + "\n2. Ligera"
@@ -111,6 +115,7 @@ public class Lab3P2_Estherhernandez {
                     break;
                 case 3:
                     tipoP = 3;
+                    ac=20;
                     System.out.println("Seleccione el tipo de magia:"
                             + "\n1. Mago Blanco"
                             + "\n2. Mago Negro"
@@ -139,6 +144,7 @@ public class Lab3P2_Estherhernandez {
                     break;
                 case 4:
                     tipoP = 4;
+                    ac=50;
                     System.out.println("Seleccione el tipo de instrumento del personaje: "
                             + "\n1. Amuleto"
                             + "\n2. Arma"
@@ -187,18 +193,22 @@ public class Lab3P2_Estherhernandez {
                 switch (traza) {
                     case 1:
                         raza ="Mediano";
+                        hp=50+rd.nextInt(60);
                         flag3=true;
                         break;
                     case 2:
                         raza="Enano";
+                        hp=80+rd.nextInt(100);
                         flag3=true;
                         break;
                     case 3:
                         raza="Elfo";
+                        hp=50+rd.nextInt(70);
                         flag3=true;
                         break;
                     case 4:
                         raza="Humano";
+                        hp=40+rd.nextInt(75);
                         flag3=true;
                         break;
                     default:
@@ -228,6 +238,7 @@ public class Lab3P2_Estherhernandez {
                     switch (nac){
                         case 1:
                             nacionalidad="Norfair";
+                            
                             flag8=true;
                             break;
                         case 2:
@@ -290,16 +301,16 @@ public class Lab3P2_Estherhernandez {
                     }
         }
             if (tipoP==1) {
-                p.add(new Clerigo(Ds,inv,nombre,raza,estatura,peso,edad,descripcion,nacionalidad,tipo));
+                p.add(new Clerigo(Ds,inv,nombre,raza,estatura,peso,edad,hp,descripcion,nacionalidad,tipo,ac));
             }
             else if (tipoP==2) {
-                p.add(new Barbaro(arma,xp,nombre,raza,estatura,peso,edad,descripcion,nacionalidad,tipo));
+                p.add(new Barbaro(arma,xp,nombre,raza,estatura,peso,edad,hp,descripcion,nacionalidad,tipo,ac));
             }
             else  if (tipoP==3) {
-                p.add(new Mago(mag,nombre, raza, estatura, peso, edad, descripcion, nacionalidad, tipo));
+                p.add(new Mago(mag,nombre, raza, estatura, peso, edad,hp, descripcion, nacionalidad, tipo,ac));
             }
              if (tipoP==4) {
-                 p.add(new Picaro(instrumento, robo, nombre, raza, estatura, peso, edad, descripcion, nacionalidad, tipo));
+                 p.add(new Picaro(instrumento, robo, nombre, raza, estatura, peso, edad,hp, descripcion, nacionalidad, tipo,ac));
             }
     
      return p;       
@@ -310,6 +321,241 @@ public class Lab3P2_Estherhernandez {
            Listar+= p.indexOf(o)+"-"+o+"\n";
         }
         return Listar;
+    }
+    public static ArrayList Modificar(ArrayList p){
+        
+        System.out.println(Listar(p));
+        System.out.println("Seleccione el personaje que desea modificar: ");
+        int p1 = lea.nextInt();
+        int op2=0;
+        if (p1<= p.size()-1) {
+            System.out.println("---General---\n Seleccione lo que desea modificar: "
+                    + "\n1. Nombre"
+                    + "\n2. Raza "
+                    + "\n3. Estatura"
+                    + "\n4. Peso"
+                    + "\n5. Años"
+                    + "\n6. Descripcion"
+                    + "\n7. Nacionalidad"
+                    + "\n---Especifico--- ");
+                     
+            if ( p.get(p1)instanceof Clerigo) {
+                System.out.println( "8)Dios o demonio del que es creyente"
+                        + "\n 9)Tipo de invocacion");                                   
+            }
+            else if (p.get(p1) instanceof Barbaro) {
+                System.out.println("10)Tipo de arma"
+                        + "\n11) Nivel de XP");              
+            }
+            else if (p.get(p1) instanceof Mago) {
+                System.out.println("12)Tipo de magia");                
+            }
+            else if (p.get(p1) instanceof Picaro) {
+                System.out.println("13) Tipo de instrumento"
+                        + "\n14)Cantidad de robo exitoso realizados");                          
+            }
+            System.out.println("15) Tipo");
+            op2= lea.nextInt();
+            int hp1=0;
+            switch (op2) {
+                case 1:
+                    System.out.println("Ingrese el nuevo nombre:");
+                    String nombre= lea.next();
+                    ((Personajes)p.get(p1)).setNombre(nombre);
+                    break;
+                case 2:
+                    System.out.println("Seleccione la nueva raza"
+                            + "\n 1. Mediano"
+                        + "\n2. Enano"
+                        + "\n3. Elfo"
+                        + "\n4. Humano\n...");
+                    int op4= lea.nextInt();
+                    if (op4==1) {
+                        hp1= 50+rd.nextInt(60);
+                         ((Personajes)p.get(p1)).setRaza("Mediano");
+                          ((Personajes)p.get(p1)).setHp(hp1);
+                    }
+                    else if (op4==2) {
+                        hp1= 80+rd.nextInt(100);
+                         ((Personajes)p.get(p1)).setRaza("Enano");
+                          ((Personajes)p.get(p1)).setHp(hp1);
+                    }
+                    else if (op4==3) {
+                        hp1= 50+rd.nextInt(70);
+                         ((Personajes)p.get(p1)).setRaza("Elfo");
+                          ((Personajes)p.get(p1)).setHp(hp1);
+                    }
+                    else if (op4==4) {
+                        hp1= 40+rd.nextInt(75);
+                         ((Personajes)p.get(p1)).setRaza("Humano");
+                          ((Personajes)p.get(p1)).setHp(hp1);
+                    }
+                    else{
+                        System.out.println("Opcion no disponible: ");
+                    }
+                    break;
+                case 3:
+                    System.out.println("Ingrese la nueva estatura: ");
+                    int est=lea.nextInt();
+                    ((Personajes)p.get(p1)).setEstatura(est);
+                    break;
+                case 4:
+                    System.out.println("Ingrese el nuevo peso: ");
+                    int peso=lea.nextInt();
+                    ((Personajes)p.get(p1)).setPeso(peso);
+                    break;
+                case 5:
+                    System.out.println("Ingrese la nueva edad: ");
+                    int edad=lea.nextInt();
+                    ((Personajes)p.get(p1)).setEdad(edad);
+                    break;
+                case 6:
+                    System.out.println("Ingrese la nueva descripcion: ");
+                    String desc=lea.next();
+                    ((Personajes)p.get(p1)).setDescripcion(desc);
+                    break;
+                    
+                case 7:
+                    System.out.println("Seleccione la nueva nacionalidad del personaje: ");
+                System.out.println("1. Norfair"
+                        + "\n2. Brinstar"
+                        + "\n3. Maridia"
+                        + "\n4. Zebes"
+                        + "\n5. Crateria\n...");
+                int nc = lea.nextInt();
+                    if (nc==1) {
+                        ((Personajes)p.get(p1)).setNacionalidad("Norfair");
+                    }
+                    else if (nc==2) {
+                        ((Personajes)p.get(p1)).setNacionalidad("Brinstar");
+                    }
+                    else if (nc==3) {
+                        ((Personajes)p.get(p1)).setNacionalidad("Maridia");
+                    }
+                    else if (nc==4) {
+                        ((Personajes)p.get(p1)).setNacionalidad("Zebes");
+                    }
+                    else if (nc==5) {
+                        ((Personajes)p.get(p1)).setNacionalidad("Crrateria");
+                    }
+                    else{
+                        System.out.println("Opcion no disponible: ");
+                    }
+                    break;
+                case 8:
+                    System.out.println("Ingrese el nombre del nuevo dios o demonio del que es creyente");
+                    String dd= lea.nextLine(); dd=lea.next();
+                    ((Clerigo)p.get(p1)).setDcreyente(dd);
+                    break;
+                case 9:
+                    System.out.println("Ingrese el nuevo tipo de invocacion: ");
+                    String invoc= lea.next();
+                    ((Clerigo)p.get(p1)).setTinvocacion(invoc);
+                    break;
+                case 10:
+                     System.out.println("Seleccione el tipo de arma del barbaro: "
+                            + "\n1. Pesada"
+                            + "\n2. Ligera"
+                            + "\n3. Escudo\n...");
+                    int ar2=lea.nextInt();
+                    if (ar2==1) {
+                        ((Barbaro)p.get(p1)).setArma("Pesada");
+                    }
+                    else if (ar2==2) {
+                        ((Barbaro)p.get(p1)).setArma("Ligera");
+                    }
+                     else if (ar2==3) {
+                        ((Barbaro)p.get(p1)).setArma("Escudo");
+                    }
+                     else{
+                         System.out.println("Opcion no disponible ");
+                     }
+                    break;
+                case 11:
+                    System.out.println("Ingrese el nuevo nivel de Xp: ");
+                    int exp= lea.nextInt();
+                    ((Barbaro)p.get(p1)).setXp(exp);
+                    break;
+                case 12:
+                    System.out.println("Seleccione el tipo de magia:"
+                            + "\n1. Mago Blanco"
+                            + "\n2. Mago Negro"
+                            + "\n3. Sanador");
+                    int mg= lea.nextInt();
+                    if (mg==1) {
+                        ((Mago)p.get(p1)).setMagia("Mago Blanco");
+                    }
+                    else if (mg==2) {
+                        ((Mago)p.get(p1)).setMagia("Mago Negro");
+                    }
+                    else if (mg==3) {
+                        ((Mago)p.get(p1)).setMagia("Sanador");
+                    }
+                    else{
+                         System.out.println("Opcion no disponible ");
+                    }
+                    break;
+                case 13:
+                    System.out.println("Seleccione el nuevo tipo de instrumento del personaje: "
+                            + "\n1. Amuleto"
+                            + "\n2. Arma"
+                            + "\n3. Piedra Antigua");
+                    int ins= lea.nextInt();
+                    if (ins ==1) {
+                         ((Picaro)p.get(p1)).setInstrumento("Amuleto");
+                    }
+                    else if (ins ==2) {
+                        ((Picaro)p.get(p1)).setInstrumento("Arma");
+                    } 
+                    else if (ins ==3) {
+                        ((Picaro)p.get(p1)).setInstrumento("Piedra Antigua");
+                    } 
+                    else{
+                         System.out.println("Opcion no disponible ");
+                    }
+                    break;
+                case 14:
+                    System.out.println("Ingrese la nueva cantidad de robos exitosos realizados");
+                    int rb= lea.nextInt();
+                    ((Picaro)p.get(p1)).setRobos(rb);
+                    
+                    break;
+                case 15:
+                     System.out.println("Seleccione el tipo del personaje: "
+                        + "\n1. Lead"
+                        + "\n2. Support"
+                        + "\n3. Offensive"
+                        + "\n4. Spammer"
+                        + "\n5. Tank"
+                        + "\n... ");
+                int tp1=lea.nextInt();
+                    if (tp1==1) {
+                        ((Personajes)p.get(p1)).setTipo("Lead");
+                    }
+                    else if (tp1==2) {
+                        ((Personajes)p.get(p1)).setTipo("Support");
+                    }
+                     else if (tp1==3) {
+                        ((Personajes)p.get(p1)).setTipo("Offensive");
+                    }
+                      else if (tp1==4) {
+                        ((Personajes)p.get(p1)).setTipo("Spammer");
+                    }
+                       else if (tp1==5) {
+                        ((Personajes)p.get(p1)).setTipo("Tank");
+                    }
+                     else{
+                         System.out.println("Opcion no disponible ");
+                    }
+                    
+                    break;
+                default:
+                     System.out.println("Opcion no disponible");
+                    break;
+            }
+            System.out.println("Se ha modificado exitosamente");
+        }
+        return p;
     }
     
 }

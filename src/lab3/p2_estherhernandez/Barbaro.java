@@ -21,8 +21,8 @@ public class Barbaro extends Personajes {
         this.xp = xp;
     }
 
-    public Barbaro(String arma, int xp, String nombre, String raza, int estatura, int peso, int edad, String descripcion, String nacionalidad, String tipo) {
-        super(nombre, raza, estatura, peso, edad, descripcion, nacionalidad, tipo);
+    public Barbaro(String arma, int xp, String nombre, String raza, int estatura, int peso, int edad,int hp, String descripcion, String nacionalidad, String tipo ,int Ac) {
+        super(nombre, raza, estatura, peso, edad, hp,descripcion, nacionalidad, tipo,Ac);
         this.arma = arma;
         this.xp = xp;
     }
