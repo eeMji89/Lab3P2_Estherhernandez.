@@ -627,21 +627,36 @@ public class Lab3P2_Estherhernandez {
                         if (((Personajes) P.get(p0)).getTipo().equals("Support") && (P.get(p0) instanceof Mago || P.get(p0) instanceof Barbaro)) {
                             bono = CS1 * 0.02;
                             CS1 = CS1 + bono;
+                            bonoc = AC1*0.03;
+                            AC1=AC1+bonoc;
 
                         } else if (((Personajes) P.get(op8)).getTipo().equals("Support") && (P.get(op8) instanceof Mago || P.get(op8) instanceof Barbaro)) {
-
+                            bono = CS2 * 0.02;
+                            CS2 = CS2 + bono;
+                            bonoc = AC2*0.03;
+                            AC2=AC2+bonoc;
                         }
                     } else if (((Personajes) P.get(p0)).getTipo().equals("Offensive") || ((Personajes) P.get(op8)).getTipo().equals("Offensive")) {
                         if (((Personajes) P.get(p0)).getTipo().equals("Offensive") && P.get(p0) instanceof Barbaro) {
-
+                             bono = DM1 * 0.05;
+                            DM1 = DM1 + bono;
+                            hpj1=hpj1-(hpj1*0.01);
                         } else if (((Personajes) P.get(op8)).getTipo().equals("Offensive") && P.get(op8) instanceof Barbaro) {
-
+                            bono = DM2 * 0.05;
+                            DM2 = DM2 + bono;
+                            hpj2=hpj2-(hpj2*0.01);
                         }
                     } else if (((Personajes) P.get(p0)).getTipo().equals("Spammer") || ((Personajes) P.get(op8)).getTipo().equals("Spammer")) {
                         if (((Personajes) P.get(p0)).getTipo().equals("Spammer") && P.get(p0) instanceof Picaro) {
-
+                            bonoc = AC1*0.02;
+                            AC1=AC1+bonoc;
+                            bono = DM1 * 0.03;
+                            DM1 = DM1 + bono;
                         } else if (((Personajes) P.get(op8)).getTipo().equals("Spammer") && P.get(op8) instanceof Picaro) {
-
+                            bonoc = AC1*0.02;
+                            AC2 = AC2+bonoc;
+                             bono = DM2 * 0.03;
+                            DM2 = DM2 + bono;
                         }
                     } else if (((Personajes) P.get(p0)).getTipo().equals("Tank") || ((Personajes) P.get(op8)).getTipo().equals("Tank")) {
                         if (((Personajes) P.get(p0)).getTipo().equals("Tank") && (P.get(p0) instanceof Mago || P.get(p0) instanceof Picaro)) {
