@@ -569,10 +569,9 @@ public class Lab3P2_Estherhernandez {
         System.out.println("Seleccione el personaje con el que desea jugar : ");
         int p0 = lea.nextInt();
         if (p0 <= P.size() - 1 && P.get(p0) instanceof Personajes) {
-
             System.out.println(Listar(P));
             System.out.println("Seleccione el personaje contra quien desea jugar: ");
-            int op8 = 0;
+            int op8 = lea.nextInt();
             if (op8 != p0) {
                 if (op8 <= P.size() - 1 && P.get(op8) instanceof Personajes) {
                     double hpj1 = ((Personajes) P.get(p0)).getHp();
@@ -693,6 +692,41 @@ public class Lab3P2_Estherhernandez {
                                     flag0 = true;
                                     break;
                                 case 2:
+                                    AC1 = AC1 +15;
+                                    flag0 = true;
+                                    break;
+                                default:
+                                    System.out.println("Opcion invalida, intente de nuevo!...");
+                                    flag0 = false;
+                            }
+                            
+                        }
+                         System.out.println("Turno Jugador 2: ");
+                        System.out.println("Desea \n 1. Atacar?"
+                                + "\n2. Defender?");
+                        int ad1 = lea.nextInt();
+                        boolean flagp = false;
+                        while (flagp == false) {
+                            switch (ad) {
+                                case 1:
+                                    int ard = 1 + rd.nextInt(100);
+                                    if (ard > AC1) { 
+                                        if (ard> CS2) {
+                                            DM2 = DM2*2;
+                                        hpj1=hpj1-DM2;
+                                        System.out.println("Ha acertado el doble del golpe!!");
+                                        }
+                                        hpj1=hpj1-DM2;
+                                        System.out.println("Ha acertado eL golpe!!");
+                                    }
+                                    else if (ard<AC2) {
+                                        System.out.println("No ha hecho daño...");
+                                        
+                                    }
+                                    flag0 = true;
+                                    break;
+                                case 2:
+                                    AC1 = AC1 +15;
                                     flag0 = true;
                                     break;
                                 default:
