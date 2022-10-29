@@ -638,7 +638,7 @@ public class Lab3P2_Estherhernandez {
                         }
                     } else if (((Personajes) P.get(p0)).getTipo().equals("Offensive") || ((Personajes) P.get(op8)).getTipo().equals("Offensive")) {
                         if (((Personajes) P.get(p0)).getTipo().equals("Offensive") && P.get(p0) instanceof Barbaro) {
-                             bono = DM1 * 0.05;
+                            bono = DM1 * 0.05;
                             DM1 = DM1 + bono;
                             hpj1=hpj1-(hpj1*0.01);
                         } else if (((Personajes) P.get(op8)).getTipo().equals("Offensive") && P.get(op8) instanceof Barbaro) {
@@ -652,17 +652,19 @@ public class Lab3P2_Estherhernandez {
                             AC1=AC1+bonoc;
                             bono = DM1 * 0.03;
                             DM1 = DM1 + bono;
+                            CS1 = CS1-(CS1*0.01);
                         } else if (((Personajes) P.get(op8)).getTipo().equals("Spammer") && P.get(op8) instanceof Picaro) {
                             bonoc = AC1*0.02;
                             AC2 = AC2+bonoc;
                              bono = DM2 * 0.03;
                             DM2 = DM2 + bono;
+                            CS1 = CS1-(CS1*0.01);
                         }
                     } else if (((Personajes) P.get(p0)).getTipo().equals("Tank") || ((Personajes) P.get(op8)).getTipo().equals("Tank")) {
                         if (((Personajes) P.get(p0)).getTipo().equals("Tank") && (P.get(p0) instanceof Mago || P.get(p0) instanceof Picaro)) {
-
+                            hpj1=hpj1+(hpj1*0.02);
                         } else if (((Personajes) P.get(op8)).getTipo().equals("Tank") && (P.get(op8) instanceof Mago || P.get(op8) instanceof Picaro)) {
-
+                             hpj2=hpj2+(hpj2*0.02);
                         }
                     }
                     while (hpj1 > 0 || hpj2 > 0) {
@@ -675,8 +677,18 @@ public class Lab3P2_Estherhernandez {
                             switch (ad) {
                                 case 1:
                                     int ard = 1 + rd.nextInt(100);
-                                    if (ard > ((Personajes) P.get(op8)).getAc()) {
-
+                                    if (ard > AC2) { 
+                                        if (ard> CS2) {
+                                            DM1 = DM1*2;
+                                        hpj2=hpj2-DM1;
+                                        System.out.println("Ha acertado el doble del golpe!!");
+                                        }
+                                        hpj2=hpj2-DM1;
+                                        System.out.println("Ha acertado eL golpe!!");
+                                    }
+                                    else if (ard<AC2) {
+                                        System.out.println("No ha hecho daño...");
+                                        
                                     }
                                     flag0 = true;
                                     break;
