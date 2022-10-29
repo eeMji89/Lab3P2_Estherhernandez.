@@ -41,10 +41,18 @@ public class Lab3P2_Estherhernandez {
                     P = Modificar(P);
                     break;
                 case 3:
-                    
+                    System.out.println("PERSONAJES ");
+                    System.out.println(Listar(P));
                     break;
                 case 4:
-                    
+                    System.out.println(Listar(P));
+                    System.out.println("Seleccione el personaje que desea Eliminar: ");
+                    int pp = lea.nextInt();
+                    int op2=0;
+                    if (pp<= P.size()-1&& P.get(pp)instanceof Personajes ) {
+                        P.remove(pp);
+                        System.out.println("El personaje se ha eliminado exitosamente");
+                    }
                     break;
                 case 5:
                     
@@ -557,5 +565,6 @@ public class Lab3P2_Estherhernandez {
         }
         return p;
     }
+    
     
 }
