@@ -666,7 +666,7 @@ public class Lab3P2_Estherhernandez {
                              hpj2=hpj2+(hpj2*0.02);
                         }
                     }
-                    while (hpj1 > 0 || hpj2 > 0) {
+                    while (hpj1 > 0 && hpj2 > 0) {
                         System.out.println("Turno Jugador 1: (Usuario)");
                         System.out.println("Desea \n 1. Atacar?"
                                 + "\n2. Defender?");
@@ -689,6 +689,8 @@ public class Lab3P2_Estherhernandez {
                                         System.out.println("No ha hecho daño...");
                                         
                                     }
+                                     System.out.println(hpj1);
+                                    System.out.println(hpj2);
                                     flag0 = true;
                                     break;
                                 case 2:
@@ -707,7 +709,7 @@ public class Lab3P2_Estherhernandez {
                         int ad1 = lea.nextInt();
                         boolean flagp = false;
                         while (flagp == false) {
-                            switch (ad) {
+                            switch (ad1) {
                                 case 1:
                                     int ard = 1 + rd.nextInt(100);
                                     if (ard > AC1) { 
@@ -719,24 +721,30 @@ public class Lab3P2_Estherhernandez {
                                         hpj1=hpj1-DM2;
                                         System.out.println("Ha acertado eL golpe!!");
                                     }
-                                    else if (ard<AC2) {
+                                    else if (ard<AC1) {
                                         System.out.println("No ha hecho daño...");
                                         
                                     }
-                                    flag0 = true;
+                                    System.out.println(hpj1);
+                                    System.out.println(hpj2);
+                                    flagp = true;
                                     break;
                                 case 2:
                                     AC1 = AC1 +15;
-                                    flag0 = true;
+                                    flagp = true;
                                     break;
                                 default:
                                     System.out.println("Opcion invalida, intente de nuevo!...");
-                                    flag0 = false;
+                                    flagp = false;
                             }
                         }
-
-                        System.out.println("Turno Jugador 2: ");
-
+                    }
+                    System.out.println("El juego ha terminado...");
+                    if (hpj1>hpj2) {
+                        System.out.println("El jugador 1 ha ganado");
+                    }
+                    else{
+                        System.out.println("El jugador 2 ha ganado");
                     }
                 }
             } else {
